@@ -38,7 +38,9 @@
         <p-button *ngIf="!resolving" label="Get started" (click)="signUp()"></p-button>
      </div>
    
-    
+     <div *ngIf="error" class="card">
+        <p-messages [(value)]="errorMessages" [enableService]="false" [closable]="true"></p-messages>
+        </div>
 
     <div id="form-change-link">
         <p>Already have an account? <b [routerLink]="['/auth/login']" id="auth-form-link">Sign in</b></p>

@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './auth/interceptor/token.interceptor';
 import { AuthInterceptor } from './auth/interceptor/auth.interceptor';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AuthInterceptor } from './auth/interceptor/auth.interceptor';
         useClass: AuthInterceptor,
         multi: true,
       },
+      {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

@@ -12,12 +12,14 @@ export class SignUpPageComponent {
   registered: boolean = false;
   error: string = '';
   resolving: boolean = false;
+  errorMessages!: any[];
   
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.initForm();
+    this.errorMessages = [{ severity: 'error', summary: 'Error', detail: 'Invalid credentials' }];
   }
 
   initForm(): void {

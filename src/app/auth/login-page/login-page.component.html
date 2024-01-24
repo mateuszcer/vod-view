@@ -22,6 +22,9 @@
            <p-progressSpinner class="progress-spinner" *ngIf="resolving" styleClass="w-1rem h-1rem" strokeWidth="3" fill="var(--surface-ground)" animationDuration=".8s"></p-progressSpinner>
            <p-button *ngIf="!resolving" label="Login" (click)="login()"></p-button>
         </div>
+        <div *ngIf="error" class="card">
+            <p-messages [(value)]="errorMessages" [enableService]="false" [closable]="true"></p-messages>
+        </div>
     
         <div id="form-change-link">
             <p>Don't have account? <b [routerLink]="['/auth/signup']" id="auth-form-link">Sign up</b></p>
@@ -29,9 +32,7 @@
     </form>
     
     </div>
-    <div *ngIf="error" class="card">
-        <p-messages [(value)]="errorMessages" [enableService]="false" [closable]="true"></p-messages>
-    </div>
+   
     <app-confirm-signup id="confirm-signup-dialog" *ngIf="registered" [email]="email"></app-confirm-signup>
     
     
