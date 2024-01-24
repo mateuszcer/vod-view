@@ -1,0 +1,19 @@
+.home-page-container {
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+    height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .home-page-container {
+        padding: 50px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .home-page-container {
+        padding: 0px;
+    }
+}

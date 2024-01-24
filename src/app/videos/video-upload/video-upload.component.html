@@ -1,0 +1,69 @@
+<div class="video-upload-wrapper">
+    
+
+    <div class="video-upload-container">
+        
+    <p-progressBar [value]="progress"></p-progressBar>
+    
+
+    
+  
+    <h2>Upload video</h2>
+    <p-fileUpload
+      [disabled]="uploadStarted || uploaded"
+      class="custom-file-upload"
+      name="videoFile"
+      accept="video/mp4"
+      [customUpload]="true" 
+      [maxFileSize]="1000000000" 
+      (uploadHandler)="onVideoUpload($event)">
+    </p-fileUpload>
+  
+    
+    <div *ngIf="uploadedVideo">
+        <p-fileUpload
+        [disabled]="uploadStarted || uploaded"
+        name="thumbnailFile"
+        accept="image/*"
+        [customUpload]="true" 
+        [maxFileSize]="10000000" 
+        (uploadHandler)="onThumbnailUpload($event)">
+      </p-fileUpload>
+    </div>
+
+    <div *ngIf="uploadedThumbnail" class="video-upload-form">
+        <div class="video-upload-form-item">
+            <label for="title">Title:</label>
+            <input [disabled]="uploadStarted || uploaded" type="text" required pInputText id="title" [(ngModel)]="videoMetadata.title" />
+        </div>
+        <div class="video-upload-form-item">
+            <label for="description">Description:</label>
+            <textarea [disabled]="uploadStarted || uploaded" required rows="5" cols="30" pInputTextarea [autoResize]="true" id="description" [(ngModel)]="videoMetadata.description"></textarea>
+        </div>
+        <div class="video-upload-form-item">
+            <label for="productionYear">Production Year:</label>
+            <p-inputNumber [disabled]="uploadStarted || uploaded" [useGrouping]="false" inputId="productionYear" [(ngModel)]="videoMetadata.productionYear" [min]="1900" [max]="2024"></p-inputNumber>
+        </div>
+        <div class="video-upload-form-item">
+            <label for="productionYear">Categories:</label>
+            <p-multiSelect [selectionLimit]="2" [disabled]="uploadStarted || uploaded" [filter]="true" [options]="categories" [(ngModel)]="selectedCategories" optionLabel="name"></p-multiSelect>
+        </div>
+
+        <div  class="video-upload-form-item-button">
+            <p-button *ngIf="!uploadStarted" label="Submit" icon="pi pi-check" iconPos="right" (click)="onSubmitMetadata()" class="video-upload-submit-button"></p-button>
+            <p-progressSpinner class="progress-spinner" *ngIf="uploadStarted" styleClass="w-1rem h-1rem" strokeWidth="3" fill="var(--surface-ground)" animationDuration=".8s"></p-progressSpinner>
+        </div>
+
+
+    </div>
+        <div *ngIf="uploaded" class="card">
+            <p-messages [(value)]="successMessages" [enableService]="false" [closable]="true"></p-messages>
+        </div>
+        <div *ngIf="erorr" class="card">
+            <p-messages [(value)]="errorMessages" [enableService]="false" [closable]="true"></p-messages>
+        </div>
+    </div>
+    
+
+  </div>
+  

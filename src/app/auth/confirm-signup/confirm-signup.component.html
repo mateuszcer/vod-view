@@ -1,0 +1,15 @@
+
+<div id="overlay">
+
+    <div id="confirm-signup-dialog">
+        <h2>Confirm Signup</h2>
+        
+        <span class="p-float-label auth-form-item">
+            <input pInputText id="confirmationCode"  [(ngModel)]="confirmationCode"/>
+            <label for="email">Enter Confirmation Code:</label>
+        </span>
+        
+        <p-button label="Confirm" icon="pi pi-check" (click)="confirmSignup()"></p-button>
+        <div *ngIf="confirmationError" class="error">{{ confirmationError }}</div>
+    </div>
+</div>

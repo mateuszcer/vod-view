@@ -1,0 +1,24 @@
+<div *ngIf="videoMetadata" class="video-card" (click)="goToVideo()">
+    <div class="video-cardheader">
+        <img id="video-thumbnail" alt="Card" [src]="videoMetadata.thumbnailUrl" [style.width.px]="260"  />
+    </div>
+    <div class="video-card-content">
+
+        
+        <div class="video-card-title">
+            <h2>{{videoMetadata.title}}
+                
+            </h2>
+            <p>{{videoMetadata.description}}</p>
+        </div>
+        
+        <div class="card-footer">
+            <p>{{videoMetadata.productionYear}}</p>
+            <div class="card-tags">
+                <div *ngFor="let category of videoMetadata.categories" class="category-tag">{{category.name}}</div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

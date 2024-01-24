@@ -1,0 +1,21 @@
+
+
+<div class="home-page-container">
+    <div *ngIf="videosLoaded; else spinner">
+
+        <div class="home-page-row">
+            <h1>Newest movies</h1>
+            <app-video-list [videosMetadata]="newestVideosMetadata"></app-video-list>
+        </div>
+        
+        <div *ngFor="let category of categoriesToFetch" class="home-page-row">
+            <h1>{{category}}</h1>
+            <app-video-list [videosMetadata]="videosMetadata[category]"></app-video-list>
+        </div>
+    </div>
+    <ng-template #spinner>
+        <app-loading-spinner></app-loading-spinner>
+    </ng-template>
+    
+</div>
+

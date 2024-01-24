@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+// @import "primeng/resources/themes/lara-dark-blue/theme.css";
+@import "primeicons/primeicons.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0px;
+}
+
+:host  ::ng-deep .p-carousel-item{
+    max-height: 0;
+ }
+ :host ::ng-deep  .p-carousel-item-active{
+   max-height: 1px !important;
+ }
+
+
+ .p-carousel-item {
+    max-width: 300px !important;
+}
+
+.p-fileupload-buttonbar .p-button {
+  font-size: .85rem !important; 
+}
+
+.p-fileupload-row {
+  font-size: .7rem !important; 
+}
+
+.p-fileupload-filename {
+  display: none !important;
+}
+
+.p-fileupload-content {
+  margin: 0px !important;
+  padding: 0px !important;
+}

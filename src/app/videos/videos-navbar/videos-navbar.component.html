@@ -1,0 +1,15 @@
+<p-menubar [model]="items">
+    <ng-template pTemplate="start">
+      <img src="/assets/images/logo.png" height="40" class="p-mr-2" alt="brand logo">
+    </ng-template>
+    <ng-template pTemplate="end">
+        <div class="navbar-end">
+            <div class="search-container">
+                <i  *ngIf="!searchToggled" class="pi pi-search search-icon" (click)="toggleSearch()"></i>
+                <input *ngIf="searchToggled" type="text" pInputText placeholder="Search">
+            </div>
+            <button type="button" pButton label="Logout" icon="pi pi-power-off" style="margin-left:.55em" (click)="logout()"></button>
+        </div>
+        </ng-template>
+  </p-menubar>
+  

@@ -1,0 +1,6 @@
+<p-carousel [value]="videosMetadata" [numVisible]="8" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+    <ng-template let-videoMetadata pTemplate="item">
+        <app-video-card [videoMetadata]="videoMetadata"></app-video-card>
+    </ng-template>
+</p-carousel>
+

@@ -1,0 +1,16 @@
+export enum CategoryName {
+    Action = "Action",
+    Comedy = "Comedy",
+    Drama = "Drama",
+    Horror = "Horror",
+    SciFi = "Sci-Fi",
+    Thriller = "Thriller",
+    Western = "Western",
+    Fantasy = "Fantasy",
+    Anime = "Anime",
+    Documentary = "Documentary",
+    Adventure = "Adventure",
+    War = "War",
+    Crime = "Crime",
+    Romance = "Romance",
+}

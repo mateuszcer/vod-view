@@ -1,0 +1,52 @@
+<div class="signup-form-wrapper">
+
+<div  class="signup-form-container">
+    <div id="signup-form-header">
+        <h1>Sign up</h1>
+        <p>No credit card required!</p>    
+    </div>
+    
+    <form [formGroup]="signupForm" (ngSubmit)="signUp()" class="p-fluid" id="signup-form">
+        <span class="p-float-label auth-form-item">
+            <input pInputText id="firstName" formControlName="firstName" />
+            <label for="firstName">First name</label>
+        </span>
+        
+        <span class="p-float-label auth-form-item">
+            <input pInputText id="lastName" formControlName="lastName" />
+            <label for="lastName">Last name</label>
+    </span>
+    
+    <span class="p-float-label auth-form-item">
+        <input pInputText id="email" formControlName="email" />
+        <label for="email">Email</label>
+    </span>
+    
+    <span class="p-float-label auth-form-item">
+        <p-calendar id="birthdate" formControlName="birthdate"></p-calendar>
+        <label for="birthdate">Birthdate</label>
+    </span>
+    
+    
+    <span class="p-float-label auth-form-item">
+        <p-password formControlName="password" id="password"></p-password>
+        <label for="password">Password</label>
+    </span>
+
+    <div id="login-button-wrapper">
+        <p-progressSpinner class="progress-spinner" *ngIf="resolving" styleClass="w-1rem h-1rem" strokeWidth="3" fill="var(--surface-ground)" animationDuration=".8s"></p-progressSpinner>
+        <p-button *ngIf="!resolving" label="Get started" (click)="signUp()"></p-button>
+     </div>
+   
+    
+
+    <div id="form-change-link">
+        <p>Already have an account? <b [routerLink]="['/auth/login']" id="auth-form-link">Sign in</b></p>
+    </div>
+</form>
+
+</div>
+<app-confirm-signup id="confirm-signup-dialog" *ngIf="registered" [email]="email"></app-confirm-signup>
+
+
+</div>

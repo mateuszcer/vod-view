@@ -1,0 +1,57 @@
+.video-upload-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-upload-container {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 40px;
+}
+
+.video-upload-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.video-upload-form-item {
+    display: flex;
+    flex-direction: column ;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    margin-top: 20px;
+    font-weight: 200;
+}
+
+.custom-file-upload {
+    width: 80%; 
+    max-width: 400px; 
+    margin: 20px 20px;  
+  }
+
+
+  .video-upload-form-item label{
+    margin-bottom: 5px;
+    color: rgba(40, 40, 40, 0.601);
+}
+
+.video-upload-submit-button .p-button {
+    margin-top: 20px;
+    font-size: .85rem !important;
+}
+
+.video-upload-form-item-button {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.progress-spinner {
+    scale: .7 !important;
+    margin: 0px !important;
+}
+  
