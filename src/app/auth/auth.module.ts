@@ -12,8 +12,6 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { AuthComponent } from './auth/auth.component';
 import { MessagesModule } from 'primeng/messages';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './interceptor/token.interceptor';
 
 @NgModule({
   declarations: [

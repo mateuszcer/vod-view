@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AuthFlowType, AuthenticationResultType, CognitoIdentityProviderClient, ConfirmSignUpCommand, InitiateAuthCommand, SignUpCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+import { AuthFlowType, CognitoIdentityProviderClient, ConfirmSignUpCommand, InitiateAuthCommand, SignUpCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
 import { AppConfigService } from '../../shared/service/configuration.service';
 import { AuthData, AuthResponse } from '../model/auth-data';
 import { AuthDataProvider } from './auth-data.provider';
 import { Router, UrlSegment } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
+import { CognitoGroup } from '../model/cognito-group.enum';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -90,8 +93,17 @@ export class AuthService {
     try {
       const authResponse: AuthResponse = await this.client.send(command);
       const authData: AuthData | undefined = authResponse.AuthenticationResult;
-      if(!authData) {
+
+      
+      if(!authData || !authData.AccessToken) {
         throw new Error('No authentication data returned');
+      }
+
+      const decodedToken: {'cognito:groups': CognitoGroup[] | undefined} = jwtDecode(authData?.AccessToken);
+      const cognitoGroups: CognitoGroup[] | undefined = decodedToken['cognito:groups'];
+      
+      if(cognitoGroups) {
+        this.authDataProvider.addCognitoGroups(cognitoGroups);
       }
 
       this.authDataProvider.saveAuthData(authData);
@@ -115,6 +127,15 @@ export class AuthService {
   logout(): void {
     this.authDataProvider.clearAuthData();
     this.router.navigate(['auth/login']);
+    this.authDataProvider.clearCognitoGroups();
+  }
+
+  isCreator(): boolean {
+    const cognitoGroups = this.authDataProvider.getCognitoGroups();
+    if(cognitoGroups && cognitoGroups.includes(CognitoGroup.CREATOR)) {
+      return true;
+    }
+    return false;
   }
 
   

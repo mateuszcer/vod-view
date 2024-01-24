@@ -15,9 +15,12 @@ export class VideosNavbarComponent {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    
     this.items = [
-      {label: 'Home', routerLink: '/videos'},
-      {label: 'Upload', routerLink: '/videos/upload'},]
+      {label: 'Home', routerLink: '/videos'},]
+      if(this.authService.isCreator()) {
+        this.items.push({label: 'Upload', routerLink: '/videos/upload'});
+      }
   }
 
   toggleSearch() {
