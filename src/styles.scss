@@ -23,6 +23,17 @@ body {
     max-width: 300px !important;
 }
 
+.p-carousel-item-active {
+  margin-right: 20px !important;
+}
+
+@media screen and (max-width: 1199px){
+  .p-carousel-item-active {
+    margin-right: 0px !important;
+  }
+  
+}
+
 .p-fileupload-buttonbar .p-button {
   font-size: .85rem !important; 
 }
