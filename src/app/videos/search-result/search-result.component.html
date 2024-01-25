@@ -1,0 +1,8 @@
+<div class="search-result">
+
+    <div class="search-result-container">
+        <div *ngFor="let video of searchResults" class="search-video-card">
+            <app-video-card [videoMetadata]="video"></app-video-card>
+        </div>
+    </div>
+</div>

@@ -33,7 +33,10 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { VideosNavbarComponent } from './videos-navbar/videos-navbar.component';
 import { MenubarModule } from 'primeng/menubar';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
-
+import { SearchResultComponent } from './search-result/search-result.component';
+import { VideoSearchService } from './service/search.service';
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     VideoUploadComponent,
     VideoPlayerComponent,
     VideosNavbarComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    SearchResultComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +75,9 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     VgOverlayPlayModule,
     VgBufferingModule,
     MenubarModule,
+    AvatarModule,
+    AvatarGroupModule
   ],
-  providers: [VideoService]
+  providers: [VideoService, VideoSearchService]
 })
 export class VideosModule { }

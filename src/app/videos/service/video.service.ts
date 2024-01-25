@@ -57,4 +57,8 @@ export class VideoService {
         return this.httpClient.get<VideoWatchResponse>(`${this.appConfigService.API_URL}/videos/watch?v=${videoId}`);
     }
 
+    searchVideos(searchTerm: string, pageNumber: number, pageSize: number = 20): Observable<VideoMetadata[]> {
+        return this.httpClient.get<VideoMetadata[]>(`${this.appConfigService.API_URL}/videos/search?q=${searchTerm}&p=${pageNumber}&ps=${pageSize}`);
+    }
+
 }

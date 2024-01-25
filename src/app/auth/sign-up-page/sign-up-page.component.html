@@ -35,11 +35,11 @@
 
     <div id="login-button-wrapper">
         <p-progressSpinner class="progress-spinner" *ngIf="resolving" styleClass="w-1rem h-1rem" strokeWidth="3" fill="var(--surface-ground)" animationDuration=".8s"></p-progressSpinner>
-        <p-button *ngIf="!resolving" label="Get started" (click)="signUp()"></p-button>
+        <p-button *ngIf="!resolving" label="Get started" type="submit" ></p-button>
      </div>
    
      <div *ngIf="error" class="card">
-        <p-messages [(value)]="errorMessages" [enableService]="false" [closable]="true"></p-messages>
+        <p-messages [(value)]="errorMessages" [enableService]="false" [closable]="false"></p-messages>
         </div>
 
     <div id="form-change-link">

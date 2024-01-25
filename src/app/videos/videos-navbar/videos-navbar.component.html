@@ -1,14 +1,21 @@
 <p-menubar [model]="items">
-    <ng-template pTemplate="start">
-      <img src="../../../assets/logo.png" height="70" class="p-mr-2" alt="brand logo">
+    <ng-template pTemplate="start" class="logo-wrapper">
+      <img src="../../../assets/logo.png" height="70" class="p-mr-2" alt="brand logo" id="logo-image">
     </ng-template>
     <ng-template pTemplate="end">
         <div class="navbar-end">
             <div class="search-container">
-                <i  *ngIf="!searchToggled" class="pi pi-search search-icon" (click)="toggleSearch()"></i>
-                <input *ngIf="searchToggled" type="text" pInputText placeholder="Search">
+                <i  *ngIf="!searchToggled" class="pi pi-search search-icon" (click)="toggleSearch()" routerLink="search"></i>
+                <input *ngIf="searchToggled" type="text" id="search-bar" pInputText placeholder="Search" (input)="onSearchInput($event)">
             </div>
-            <button type="button" pButton label="Logout" icon="pi pi-power-off" style="margin-left:.55em" (click)="logout()"></button>
+            <div class="user-avatar" (click)="toggleDropdown()">
+                <p-avatar icon="pi pi-user" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+                <div *ngIf="dropdownVisible" class="dropdown">
+                  <ul class="dropdown-list">
+                    <li (click)="logout()">Logout</li>
+                  </ul>
+                </div>
+              </div>
         </div>
         </ng-template>
   </p-menubar>

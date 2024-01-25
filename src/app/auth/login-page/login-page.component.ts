@@ -32,6 +32,10 @@ export class LoginPageComponent {
   }
 
   login() {
+    if (!this.signupForm.valid) {
+      this.error = 'Invalid data';
+      return;
+    }
     this.resolving = true;
     this.authService.login(this.email, this.password)
       .catch(error => {

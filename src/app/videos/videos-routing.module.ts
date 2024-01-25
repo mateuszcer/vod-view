@@ -5,6 +5,7 @@ import { VideosBrowserComponent } from './videos-browser/videos-browser.componen
 import { VideoUploadComponent } from './video-upload/video-upload.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { CreatorGuardService } from '../auth/guard/creator-guard.service';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 const routes: Routes = [{
   path: '',
@@ -16,7 +17,9 @@ const routes: Routes = [{
   canActivate: [(route: any, url: any[]) => inject(CreatorGuardService).canActivate()],
 component: VideoUploadComponent},
 {path: 'watch',
-component: VideoPlayerComponent}
+component: VideoPlayerComponent},
+{path: 'search',
+component: SearchResultComponent}
   ]
 }];
 

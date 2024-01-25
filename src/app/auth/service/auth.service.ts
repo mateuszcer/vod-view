@@ -138,5 +138,8 @@ export class AuthService {
     return false;
   }
 
+  getAuthData(): AuthData | undefined {
+    return this.authDataProvider.getAuthData();
+  }
   
 }

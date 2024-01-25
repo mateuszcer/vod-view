@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
+import { PasswordValidators } from '../validators/password.validators';
 
 @Component({
   selector: 'app-sign-up-page',
@@ -19,7 +20,7 @@ export class SignUpPageComponent {
 
   ngOnInit(): void {
     this.initForm();
-    this.errorMessages = [{ severity: 'error', summary: 'Error', detail: 'Invalid credentials' }];
+    this.errorMessages = [{ severity: 'error', summary: 'Error', detail: 'Invalid signup data' }];
   }
 
   initForm(): void {
@@ -28,14 +29,15 @@ export class SignUpPageComponent {
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       birthdate: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(8), 
+      PasswordValidators.containsUppercase, PasswordValidators.containsNumber, PasswordValidators.containsSpecialCharacter]],
     });
   }
 
   signUp(): void {
-    this.resolving = true;
+
     if (this.signupForm.valid) {
-      
+      this.resolving = true;
       this.authService.signUp(this.firstName, this.lastName, 
         this.email, this.password, this.birthdate)
         .then(data => {
@@ -47,6 +49,7 @@ export class SignUpPageComponent {
           this.resolving = false;
         });
     } else {
+      this.error = 'Invalid data';
     }
   }
 
