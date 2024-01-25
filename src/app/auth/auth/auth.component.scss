@@ -2,5 +2,13 @@
     width: 100vw;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
+}
+
+
+@media screen and (max-width: 800px){
+    #logo-wrapper img {
+        width: 190px;
+    }
+    
 }

@@ -30,7 +30,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     InputTextModule,
     FormsModule,
     MessagesModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    
   ],
 })
 export class AuthModule { }
